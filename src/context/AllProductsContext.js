@@ -7,11 +7,12 @@ const allproductsReducer = (state, action) => {
   switch (action.type) {
     case "GET_PRODUCTS":
       return {
-        ...state,
+        
         products: action.payload,
         loading: false,
         error: action.error,
       };
+      default:return state
   }
 };
 function AllProductsContext({ children }) {
