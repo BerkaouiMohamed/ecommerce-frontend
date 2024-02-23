@@ -8,6 +8,12 @@ import HomeProductsContext from "./context/HomeProductsContext";
 import RootContext from "./context/RootContext";
 
 function App() {
+  const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDAyfQ.Awd_hi0oxEEfFqPUpgXEsolye_MLlYUPFAwIDHDoELU"
+const decode=token.split('.')[1]
+console.log(decode);
+const {_id}=bota("hello")
+console.log(_id);
+
   return (<RootContext >
     <div className="App">
       <Navbar />
