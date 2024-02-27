@@ -4,9 +4,10 @@ import "./pages.css";
 import Input from "../components/Input";
 import Button from "react-bootstrap/Button";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import hundleLogin from "../utils/login";
 import { ToastContainer } from "react-toastify";
+import { contextUser } from "../context/UserContext";
 
 function Login() {
   const [loading, setLoading] = useState(false);
@@ -15,6 +16,9 @@ function Login() {
     email: "",
     password: "",
   });
+
+const {auth,setAuth}=useContext(contextUser)
+  
   return (
     <div className="login-container">
       <ToastContainer />
@@ -23,7 +27,7 @@ function Login() {
       <Button
         variant="primary"
         onClick={
-          !loading ? (e) => hundleLogin(e, user, navigate, setLoading) : null
+          !loading ? (e) => hundleLogin(e, user, navigate, setLoading,setAuth) : null
         }
       >
         submit

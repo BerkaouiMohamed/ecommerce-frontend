@@ -1,13 +1,16 @@
 import axios from "axios";
+import { useContext } from "react";
 import { toast } from "react-toastify";
+import { contextUser } from "../context/UserContext";
 
-function hundleLogin(e,user,navigate,setLoading) {
+
+function hundleLogin(e,userlogin,navigate,setLoading,setUser) {
 
 
     setLoading(true)
       axios
         .post("http://localhost:5000/api/auth/login", 
-        user
+        userlogin
   
         )
         .then((res) =>
@@ -19,7 +22,13 @@ function hundleLogin(e,user,navigate,setLoading) {
           else{
             toast("welcome");
             setTimeout(()=>{ navigate('/')},1000)
+
+            setUser(res.data.data)
+            localStorage.setItem("user",JSON.stringify(res.data.data))
+            
           }
+
+
         })
         setLoading(false)
       
