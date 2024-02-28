@@ -42,6 +42,7 @@ const cardReducer = (state, action) => {
 };
 
 function CardContext({ children }) {
+
   const [card, dispatchCard] = useReducer(cardReducer, []);
 
   return (

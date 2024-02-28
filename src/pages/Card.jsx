@@ -13,8 +13,8 @@ console.log(card);
 
    
 
-        {card.map((product)=>{
-            return <ProductCard product={product}/>
+        {card.map((product,i)=>{
+            return <ProductCard product={product} key={i}/>
         })}
 
           <Link to='/order'> <Button>orderNow</Button></Link> 

@@ -3,7 +3,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import "./pages.css";
 import Input from "../components/Input";
 import Button from "react-bootstrap/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import hundleLogin from "../utils/login";
 import { ToastContainer } from "react-toastify";
@@ -16,6 +16,10 @@ function Login() {
     email: "",
     password: "",
   });
+  const location=useLocation()
+
+
+  const oldloc=location?.state?.from?.pathname || '/'
 
 const {auth,setAuth}=useContext(contextUser)
   
@@ -27,7 +31,7 @@ const {auth,setAuth}=useContext(contextUser)
       <Button
         variant="primary"
         onClick={
-          !loading ? (e) => hundleLogin(e, user, navigate, setLoading,setAuth) : null
+          !loading ? (e) => hundleLogin(e, user, navigate, setLoading,setAuth,oldloc) : null
         }
       >
         submit

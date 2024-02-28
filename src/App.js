@@ -8,27 +8,35 @@ import HomeProductsContext from "./context/HomeProductsContext";
 import RootContext from "./context/RootContext";
 import Card from "./pages/Card";
 import Order from "./pages/Order";
+import ProtectedRoutes from "./utils/ProtectedRoutes";
+import { useContext } from "react";
+import { contextUser } from "./context/UserContext";
+import GetOrders from "./pages/GetOrders";
 
 function App() {
+
  
 
-  return (<RootContext >
+  return (
     <div className="App">
       <Navbar />
       <Routes>
        
-        <Route path="/" element={ <Home />} />
-      
-        <Route path="/products" element={<Products />} />
+       
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/orders" element={ <GetOrders />} />
+
+<Route element={<ProtectedRoutes/>}>
+        <Route path="/" element={ <Home />} />
+        <Route path="/products" element={<Products />} />
         <Route path="/card" element={<Card />} />
         <Route path="/order" element={<Order />} />
-
+</Route>
 
       </Routes>
     </div>
-    </RootContext>
+  
   );
 }
 

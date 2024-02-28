@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { contextUser } from "../context/UserContext";
 
 
-function hundleLogin(e,userlogin,navigate,setLoading,setUser) {
+function hundleLogin(e,userlogin,navigate,setLoading,setUser,oldloc) {
 
 
     setLoading(true)
@@ -21,7 +21,7 @@ function hundleLogin(e,userlogin,navigate,setLoading,setUser) {
           }
           else{
             toast("welcome");
-            setTimeout(()=>{ navigate('/')},1000)
+            setTimeout(()=>{ navigate(oldloc)},1000)
 
             setUser(res.data.data)
             localStorage.setItem("user",JSON.stringify(res.data.data))

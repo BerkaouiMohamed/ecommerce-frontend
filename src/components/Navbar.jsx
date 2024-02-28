@@ -4,9 +4,11 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { contextUser } from "../context/UserContext";
+import { contextCard } from "../context/CardContext";
 
 function NavigationBar() {
   const { auth, setAuth } = useContext(contextUser);
+  const {card}=useContext(contextCard)
   const hundleLogOut = () => {
     setAuth(null);
     localStorage.removeItem("user");
@@ -42,7 +44,7 @@ function NavigationBar() {
             ) : (
               <>
                 {" "}
-                <Link to='/card' className="text-white">card</Link>
+                {card.length>0?<Link to='/card' className="text-white">card</Link>:null}
                 <p onClick={hundleLogOut}>LogOut</p>
               </>
             )}
