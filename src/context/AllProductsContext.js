@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { contextUser } from "./UserContext";
+import instance from "./axiosConfig";
 
 export const productsContext = createContext();
 
@@ -24,11 +25,10 @@ function AllProductsContext({ children }) {
     error: null,
   });
   useEffect(() => {
-   auth&& axios.get("http://localhost:5000/api/product",{headers:{
+   auth&& instance.get("/api/product",{headers:{
       "authorization":`Bearer ${auth.token}`
       
           }}).then((res) => {
-            console.log(res.data);
       if (res.data.status == "success") {
         dispatch({ type: "GET_PRODUCTS", payload: res.data.data, error: null });
       } else {
@@ -41,6 +41,7 @@ function AllProductsContext({ children }) {
       }
     });
   }, [dispatch,auth]);
+
   return (
     <productsContext.Provider value={{ state, dispatch }}>
       {children}

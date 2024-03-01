@@ -43,10 +43,18 @@ function NavigationBar() {
               </>
             ) : (
               <>
+                    <Link
+                  to={"/myorders"}
+                  className="text-white text-decoration-none"
+                >
+                  myorders
+                </Link>
                 {" "}
                 {card.length>0?<Link to='/card' className="text-white">card</Link>:null}
                 <p onClick={hundleLogOut}>LogOut</p>
+                {auth.role==='admin' &&<><Link to={"/allorders"}>usersorders</Link><Link to={"/addproduct"}>addProduct</Link>  </>}
               </>
+
             )}
           </Nav>
         </Navbar.Collapse>

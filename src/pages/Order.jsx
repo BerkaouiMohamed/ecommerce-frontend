@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Order() {
-  const { card } = useContext(contextCard);
+  const { card, } = useContext(contextCard);
   const { auth } = useContext(contextUser);
   const navigate = useNavigate();
   const orderProducts = card.map((prod) => {
@@ -18,12 +18,15 @@ function Order() {
     totalPrice += prod.product.price * prod.quantity;
   });
   const hundleOrder = () => {
+    console.log();
     axios
       .post("http://localhost:5000/api/order/", {
         user: auth._id,
         products: orderProducts,
         total: totalPrice,
-      })
+      },{headers:{
+        Authorization:`Bearer ${auth.token}`
+    }},)
       .then((res) => {
         console.log(res.data);
         if (res.data.status == "success") toast("order is on road");

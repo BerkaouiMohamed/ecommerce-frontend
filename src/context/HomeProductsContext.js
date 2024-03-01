@@ -22,7 +22,6 @@ function HomeProductsContext({ children }) {
     loading: true,
     error: null,
   });
-  console.log(auth);
   
   useEffect(() => {
   auth&& axios.get("http://localhost:5000/api/product?limit=5",{headers:{ 
@@ -40,7 +39,6 @@ function HomeProductsContext({ children }) {
       }
     });
   }, [dispatch,auth]);
-  console.log(state);
   return (
     <homeContext.Provider value={{ state, dispatch }}>
       {children}

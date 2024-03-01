@@ -29,7 +29,7 @@ const deleteProduct=()=>{
 
   return (
     <Card style={{ width: "18rem" ,height:"25rem" }}>
-      <Card.Img variant="top" src={product.image} style={{height:"15rem"}} />
+      <Card.Img variant="top" src={`http://localhost:5000/${product.image}`} style={{height:"15rem"}} />
       <Card.Body>
         <Card.Title>{product.title.slice(0,10)} ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
          {quantity? product.price*quantity:product.price}</Card.Title>

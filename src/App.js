@@ -12,6 +12,9 @@ import ProtectedRoutes from "./utils/ProtectedRoutes";
 import { useContext } from "react";
 import { contextUser } from "./context/UserContext";
 import GetOrders from "./pages/GetOrders";
+import AllOrders from "./pages/admin/AllOrders";
+import EditOrder from "./pages/admin/EditOrder";
+import AddProduct from "./pages/admin/addProduct";
 
 function App() {
 
@@ -32,7 +35,15 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/card" element={<Card />} />
         <Route path="/order" element={<Order />} />
+        <Route path="/myorders" element={<GetOrders />} />
+      <Route path='/allorders' element={<AllOrders/>}/>
+      <Route path='/editorder/:id' element={<EditOrder/>}/>
+
+      <Route path='/addproduct' element={<AddProduct/>}/>
+
 </Route>
+
+
 
       </Routes>
     </div>

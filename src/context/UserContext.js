@@ -1,10 +1,10 @@
-import React, {  createContext, useEffect, useState } from "react";
+import React, {  createContext, useEffect, useLayoutEffect, useState } from "react";
 
 export const contextUser = createContext();
 function UserContext({ children }) {
   const [auth, setAuth] = useState();
 const local=localStorage.getItem('user')
-useEffect(()=>{
+useLayoutEffect(()=>{
     if(local){
         setAuth(JSON.parse(local))
       }

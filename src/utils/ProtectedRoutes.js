@@ -5,8 +5,9 @@ import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom'
 function ProtectedRoutes() {
     const {auth}=useContext(contextUser)
     const location=useLocation()
-  return (
-auth?<Outlet/>:<Navigate to={'/login'} state={{from:location}}/>
+    console.log(auth);
+  return (auth===undefined?null:
+auth===null?<Navigate to={'/login'} state={{from:location}}/>:<Outlet/>
 
   )
 }

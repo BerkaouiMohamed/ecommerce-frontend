@@ -11,12 +11,18 @@ console.log(orders);
           "Authorization":`Bearer ${auth.token}`  
               }}).then((res)=>{
 
-      setOrders(res.data)     
+      setOrders(res.data.data)     
        })  
        },[setOrders,auth])
+
   return (
-    <div>
-   {/* { orders.map((order)=>  <table>
+    <div style={{textAlign:"center"}}>
+   {orders&& orders?.map((order)=>  
+   <div style={{marginBottom:"20px"}}>
+   <h3>order id:{order._id}</h3>
+   <h3>status:{order.status}</h3>
+    
+   <table  border="2px" >
         <tr>
         <th>
 product:
@@ -25,12 +31,14 @@ quantity
         </tr>
 
       {order.products.map((prod)=>{
+        console.log(prod);
        return <tr>
-        {}
+        <td>{prod.product.title}</td>
+        <td>{prod.quantity}</td>
        </tr>
       })}
         
-      </table>)} */}
+      </table></div>)}
         
     </div>
   )
